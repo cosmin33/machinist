@@ -1,16 +1,23 @@
-import sbtcrossproject.{crossProject, CrossType}
+import sbtcrossproject.CrossPlugin.autoImport.crossProject
+import sbtcrossproject.CrossType
 import ReleaseTransformations._
 
 val Scala211 = "2.11.12"
 val Scala212 = "2.12.8"
+val Scala213 = "2.13.0"
+
+inThisBuild(Seq(
+  scalaVersion := Scala213,
+  crossScalaVersions := Seq(Scala213),
+))
 
 lazy val machinistSettings = Seq(
   organization := "org.typelevel",
   licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
   homepage := Some(url("http://github.com/typelevel/machinist")),
 
-  scalaVersion := Scala212,
-  crossScalaVersions := Seq(Scala211, Scala212, "2.13.0"),
+  scalaVersion := Scala213,
+  crossScalaVersions := Seq(Scala211, Scala212, Scala213),
 
   scalacOptions ++= Seq(
     "-feature",
